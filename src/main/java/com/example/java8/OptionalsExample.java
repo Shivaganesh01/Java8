@@ -18,7 +18,7 @@ public class OptionalsExample {
         optionalInteger = Optional.ofNullable(1);
 
         optionalInteger.ifPresent(System.out::println);
-        if(optionalInteger.isPresent()){
+        if (optionalInteger.isPresent()) {
             System.out.println(optionalInteger.get());
         }
 
@@ -30,7 +30,9 @@ public class OptionalsExample {
         // Rejecting certain values using the filter method
         Optional<String> stringOptional = Optional.of("Shivaganesh");
         stringOptional.filter(string -> "Shivaganesh".equals(string))
-                .ifPresent(s -> {System.out.println(s+ " Present");});
+                .ifPresent(s -> {
+                    System.out.println(s + " Present");
+                });
 
     }
 }

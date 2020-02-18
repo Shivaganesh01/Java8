@@ -54,19 +54,19 @@ public class TestEmployeePredicate {
 
     }
 
-    public static List<Employee> filterEmployees(List<Employee> employees, Predicate<Employee> predicate){
+    public static List<Employee> filterEmployees(List<Employee> employees, Predicate<Employee> predicate) {
         return employees.stream().filter(predicate).collect(Collectors.toList());
     }
 
-    public static Predicate<Employee> firstNameStartsWith(String string){
+    public static Predicate<Employee> firstNameStartsWith(String string) {
         return employee -> employee.getFirstName().startsWith(string);
     }
 
-    public static Predicate<Employee> isMale(){
+    public static Predicate<Employee> isMale() {
         return employee -> employee.getGender().equals("M");
     }
 
-    public static Predicate<Employee> isAdultFemale(){
+    public static Predicate<Employee> isAdultFemale() {
         return employee -> employee.getGender().equals("F") && employee.getAge() >= 18;
     }
 

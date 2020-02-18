@@ -1,23 +1,5 @@
 package com.example.java8;
 
-public class FunctionalInterfaceExample {
-    public static void main(String[] args) {
-        RunIt runIt = new RunIt() {
-            @Override
-            public void runMe() {
-                System.out.println("Running a Custom Functional Interface");
-            }
-        };
-        RunIt lambdaWayInitialization = () -> {
-            System.out.println("Running a Custom Functional Interface using lambda");
-        };
-        runIt.runMe();
-        lambdaWayInitialization.runMe();
-        runIt.myRun1();
-        RunIt.myRun2();
-    }
-}
-
 /*
  * Functional interfaces are new additions in java 8 which permit exactly one abstract method inside them.
  * These interfaces are also called Single Abstract Method interfaces (SAM Interfaces).
@@ -34,6 +16,11 @@ public class FunctionalInterfaceExample {
 @FunctionalInterface
         // Without this annotation too it is a Functional Interface
 interface RunIt {
+    // You can have any no. of static methods
+    static void myRun2() {
+        System.out.println("static Method Invocation in an Interface");
+    }
+
     public abstract void runMe();
 
     /* You can have any no. of default methods
@@ -59,12 +46,25 @@ interface RunIt {
         System.out.println("default Method Invocation in an Interface");
     }
 
-    // You can have any no. of static methods
-    static void myRun2() {
-        System.out.println("static Method Invocation in an Interface");
-    }
-
     // Overridden from Object class
     @Override
     public boolean equals(Object obj);
+}
+
+public class FunctionalInterfaceExample {
+    public static void main(String[] args) {
+        RunIt runIt = new RunIt() {
+            @Override
+            public void runMe() {
+                System.out.println("Running a Custom Functional Interface");
+            }
+        };
+        RunIt lambdaWayInitialization = () -> {
+            System.out.println("Running a Custom Functional Interface using lambda");
+        };
+        runIt.runMe();
+        lambdaWayInitialization.runMe();
+        runIt.myRun1();
+        RunIt.myRun2();
+    }
 }
