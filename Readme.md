@@ -10,3 +10,7 @@ I have referred following websites to learn Java 8 features
     2. Reference to instance method from instance - ClassInstance::instanceMethodName
     4. Reference to instance method from class type - Class::instanceMethodName
     5. Reference to constructor - Class::new
+    
+ [Date and Time](https://howtodoinjava.com/java8/date-and-time-api-changes-in-java-8-lambda/)
+ 
+ LocalDate, LocalTime, LocalDateTime, OffsetDateTime, ZonedDateTime, Instant, Duration, Period, DayOfWeek, Date adjusters( TemporalAdjusters.lastDayOfMonth(), TemporalAdjusters.next(DayOfWeek.TUESDAY)), Clock, DateTimeFormatter 
