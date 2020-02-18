@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class TestEmployeePredicate {
@@ -36,6 +37,21 @@ public class TestEmployeePredicate {
 
         System.out.println(filterEmployees(employees, isAdultFemale().and(firstNameStartsWith("N"))));
 
+        // Compile regex as predicate
+        Predicate<String> emailFilter = Pattern
+                .compile("^(.+)@example.com$")
+                .asPredicate();
+        // Input list
+        List<String> emails = Arrays.asList("alex@example.com", "bob@yahoo.com",
+                "cat@google.com", "david@example.com");
+        // Apply predicate filter
+        List<String> desiredEmails = emails
+                .stream()
+                .filter(emailFilter)
+                .collect(Collectors.toList());
+        // Now perform desired operation
+        desiredEmails.forEach(System.out::println);
+
     }
 
     public static List<Employee> filterEmployees(List<Employee> employees, Predicate<Employee> predicate){
@@ -53,4 +69,5 @@ public class TestEmployeePredicate {
     public static Predicate<Employee> isAdultFemale(){
         return employee -> employee.getGender().equals("F") && employee.getAge() >= 18;
     }
+
 }
