@@ -1,5 +1,9 @@
 package com.example.java8;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class LamdbaExpressions {
     /**
     Features of Lambda Expressions
@@ -28,35 +32,20 @@ public class LamdbaExpressions {
             }
         }).start();
 
+        // Creating a new Runnable using lambda expression
         new Thread(
                 () ->   {
                     System.out.println("Lambda Expression");
                 }
         ).start();
 
-        RunIt runIt = new RunIt(){
-            @Override
-            public void run() {
-                System.out.println("Running a Custom Functional Interface");
-            }
-        };
-        runIt.run();
-        runIt.myRun1();
-        RunIt.myRun2();
+        // Iterating over a list and performing some actions
+        List<String> myList = new ArrayList<>(Arrays.asList("A", "B"));
+        myList.forEach(s -> {
+            System.out.println(s.toLowerCase());
+        });
     }
 
 }
 
-// Single Abstract Method interfaces (SAM Interfaces) interfaces with single abstract method. From Java 8, also called as functional interfaces
-@FunctionalInterface
-interface RunIt {
-    public abstract void run();
-    // You can have any no. of default Methods
-    default void myRun1(){
-        System.out.println("default Method Invocation in an Interface");
-    }
-    // You can have any no. of static Methods
-    static void myRun2(){
-        System.out.println("static Method Invocation in an Interface");
-    }
-}
+
